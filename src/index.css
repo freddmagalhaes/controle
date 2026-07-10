@@ -1,0 +1,474 @@
+/* ==========================================================================
+   SISTEMA DE DESIGN PREMIUM: GESTÃO DE BENEFÍCIOS (VANILLA CSS)
+   Tema: Glassmorphism Dark Neon (Estilo Alta Tecnologia / Dashboard Sênior)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Font Family */
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Color Palette (HSL para maior controle harmônico) */
+  --bg-main: #060913;
+  --bg-card: hsla(224, 60%, 8%, 0.65);
+  --bg-sidebar: hsla(224, 70%, 5%, 0.85);
+  --bg-hover: hsla(224, 50%, 15%, 0.4);
+  --bg-input: hsla(224, 50%, 4%, 0.6);
+  
+  --border-color: hsla(224, 40%, 20%, 0.4);
+  --border-glow: hsla(217, 90%, 60%, 0.15);
+  --border-focus: hsla(217, 100%, 60%, 0.6);
+  
+  /* Neon Accents */
+  --primary: hsl(217, 100%, 61%);          /* Blue Neon */
+  --primary-glow: hsla(217, 100%, 61%, 0.3);
+  --secondary: hsl(263, 90%, 64%);        /* Purple Neon */
+  --secondary-glow: hsla(263, 90%, 64%, 0.25);
+  
+  /* Status Colors */
+  --color-success: hsl(145, 80%, 45%);     /* Green */
+  --color-success-bg: hsla(145, 80%, 45%, 0.1);
+  --color-warning: hsl(38, 95%, 50%);       /* Orange/Yellow */
+  --color-warning-bg: hsla(38, 95%, 50%, 0.1);
+  --color-danger: hsl(355, 85%, 55%);       /* Red */
+  --color-danger-bg: hsla(355, 85%, 55%, 0.1);
+  --color-info: hsl(190, 90%, 50%);         /* Cyan */
+  --color-info-bg: hsla(190, 90%, 50%, 0.1);
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Shadows and Blurs */
+  --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 16px -6px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 12px 24px -8px rgba(0, 0, 0, 0.8);
+  --glass-blur: blur(16px);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+}
+
+/* Reset Global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbars Modernos */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  min-height: 100vh;
+  /* Glows no background para dar efeito imersivo 3D */
+  background-image: 
+    radial-gradient(circle at 10% 20%, hsla(217, 100%, 61%, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, hsla(263, 90%, 64%, 0.08) 0%, transparent 40%);
+}
+
+/* ==========================================================================
+   ESTILOS DE COMPONENTES CORE / UTILS
+   ========================================================================== */
+
+/* Botões Modernos com Efeitos Neon */
+button, .btn {
+  font-family: var(--font-sans);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  box-shadow: 0 4px 15px -3px var(--primary-glow);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -4px var(--primary-glow), 0 0 10px var(--primary-glow);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+.btn-secondary:hover {
+  background: var(--bg-hover);
+  border-color: var(--primary);
+  box-shadow: 0 0 8px var(--border-glow);
+}
+
+.btn-danger {
+  background: var(--color-danger-bg);
+  border: 1px solid var(--color-danger);
+  color: var(--color-danger);
+}
+.btn-danger:hover {
+  background: var(--color-danger);
+  color: #fff;
+  box-shadow: 0 4px 12px var(--color-danger-bg);
+}
+
+.btn-icon {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: var(--radius-sm);
+}
+
+/* Painéis de Vidro (Glassmorphism) */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 24px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.glass-panel:hover {
+  border-color: hsla(217, 100%, 61%, 0.2);
+  box-shadow: var(--shadow-lg), 0 0 20px var(--border-glow);
+}
+
+/* inputs e formulários */
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  outline: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+  background: var(--bg-hover);
+}
+
+/* Badges e Status */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.badge-success {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid hsla(145, 80%, 45%, 0.2);
+}
+
+.badge-warning {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+  border: 1px solid hsla(38, 95%, 50%, 0.2);
+}
+
+.badge-danger {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+  border: 1px solid hsla(355, 85%, 55%, 0.2);
+}
+
+.badge-info {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+  border: 1px solid hsla(190, 90%, 50%, 0.2);
+}
+
+/* Tabelas Premium */
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+  border-radius: var(--radius-sm);
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+}
+
+th {
+  background: hsla(224, 60%, 4%, 0.5);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background-color: var(--bg-hover);
+}
+
+/* ==========================================================================
+   LAYOUT GERAL: SIDEBAR & CONTEÚDO
+   ========================================================================== */
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar Estilo Glass */
+.sidebar {
+  width: 260px;
+  background: var(--bg-sidebar);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  position: fixed;
+  height: 100vh;
+  z-index: 100;
+  transition: width 0.3s;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 30%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 40px;
+  padding-left: 10px;
+}
+
+.sidebar-logo svg {
+  stroke: url(#logo-grad);
+  filter: drop-shadow(0 0 8px var(--primary));
+}
+
+.sidebar-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.sidebar-item button {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 12px 16px;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+}
+.sidebar-item button:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+.sidebar-item.active button {
+  background: var(--bg-hover);
+  color: var(--primary);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-weight: 600;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.user-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-hover);
+}
+
+.avatar-initials {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.user-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.user-role {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* Área de Conteúdo Principal */
+.main-content {
+  margin-left: 260px;
+  flex-grow: 1;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.page-title h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #fff, var(--text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.page-title p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   ANIMAÇÕES E TRANSIÇÕES
+   ========================================================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px var(--border-glow); }
+  50% { box-shadow: 0 0 20px var(--primary-glow); }
+}
+
+.pulse-glowing {
+  animation: pulse-glow 3s infinite;
+}
+
+/* Responsividade Básica */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 80px;
+    padding: 20px 10px;
+  }
+  .sidebar-logo span,
+  .user-info,
+  .sidebar-item span,
+  .btn-signout span {
+    display: none;
+  }
+  .main-content {
+    margin-left: 80px;
+    padding: 20px;
+  }
+  .sidebar-logo {
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .sidebar-item button {
+    justify-content: center;
+    padding: 12px 0;
+  }
+}
