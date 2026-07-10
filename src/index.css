@@ -452,6 +452,15 @@ tr:hover td {
   animation: pulse-glow 3s infinite;
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(1deg); }
+}
+
+.floating-card-mockup {
+  animation: float 6s ease-in-out infinite;
+}
+
 /* Responsividade Básica */
 @media (max-width: 992px) {
   .sidebar {

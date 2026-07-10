@@ -5,9 +5,10 @@ import { ShieldAlert, KeyRound, Mail, RefreshCw, Lock } from "lucide-react";
 
 interface AuthProps {
   onLoginSuccess: (user: any) => void;
+  onBack?: () => void;
 }
 
-export default function Auth({ onLoginSuccess }: AuthProps) {
+export default function Auth({ onLoginSuccess, onBack }: AuthProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -72,6 +73,30 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
   return (
     <div className="auth-wrapper" style={styles.container}>
       <div className="glass-panel fade-in" style={styles.card}>
+        {onBack && (
+          <button 
+            type="button" 
+            onClick={onBack} 
+            style={{ 
+              background: "none", 
+              border: "none", 
+              color: "var(--text-secondary)", 
+              fontSize: "0.85rem", 
+              cursor: "pointer", 
+              display: "flex", 
+              alignItems: "center", 
+              gap: "6px", 
+              padding: "4px 8px", 
+              borderRadius: "6px", 
+              marginBottom: "1rem", 
+              transition: "all 0.2s ease" 
+            }}
+            onMouseOver={(e) => e.currentTarget.style.color = "var(--text-primary)"}
+            onMouseOut={(e) => e.currentTarget.style.color = "var(--text-secondary)"}
+          >
+            ← Voltar para o site
+          </button>
+        )}
         <div style={styles.logoArea}>
           <div className="avatar-initials" style={styles.logoIcon}>
             <svg

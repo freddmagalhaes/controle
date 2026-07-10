@@ -6,6 +6,7 @@ import EmpresasContratos from "./components/EmpresasContratos";
 import Colaboradores from "./components/Colaboradores";
 import Cartoes from "./components/Cartoes";
 import Auditoria from "./components/Auditoria";
+import LandingPage from "./components/LandingPage";
 import { LayoutDashboard, Building2, Users, CreditCard, ShieldAlert, LogOut, Sun, Moon } from "lucide-react";
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
   const [theme, setTheme] = useState<"dark" | "light">(() => {
     return (localStorage.getItem("omnicard_theme") as "dark" | "light") || "dark";
   });
+  const [view, setView] = useState<"landing" | "login">("landing");
 
   // Mapeamento dos perfis de usuário e tema
   useEffect(() => {
@@ -64,6 +66,7 @@ export default function App() {
     await supabase.auth.signOut();
     setSession(null);
     setActiveTab("dashboard");
+    setView("landing");
   };
 
   if (loading) {
@@ -75,9 +78,18 @@ export default function App() {
     );
   }
 
-  // Se deslogado, exibe tela de login
+  // Se deslogado, exibe a landing page ou a tela de login
   if (!session) {
-    return <Auth onLoginSuccess={handleLoginSuccess} />;
+    if (view === "login") {
+      return <Auth onLoginSuccess={handleLoginSuccess} onBack={() => setView("landing")} />;
+    }
+    return (
+      <LandingPage 
+        onAccessPortal={() => setView("login")} 
+        theme={theme} 
+        toggleTheme={toggleTheme} 
+      />
+    );
   }
 
   const role = session.user_metadata?.role || "operador";
