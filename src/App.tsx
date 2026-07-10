@@ -6,14 +6,35 @@ import EmpresasContratos from "./components/EmpresasContratos";
 import Colaboradores from "./components/Colaboradores";
 import Cartoes from "./components/Cartoes";
 import Auditoria from "./components/Auditoria";
-import { LayoutDashboard, Building2, Users, CreditCard, ShieldAlert, LogOut } from "lucide-react";
+import { LayoutDashboard, Building2, Users, CreditCard, ShieldAlert, LogOut, Sun, Moon } from "lucide-react";
 
 export default function App() {
   const [session, setSession] = useState<any>(null);
   const [activeTab, setActiveTab] = useState<string>("dashboard");
   const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState<"dark" | "light">(() => {
+    return (localStorage.getItem("omnicard_theme") as "dark" | "light") || "dark";
+  });
 
-  // Mapeamento dos perfis de usuário
+  // Mapeamento dos perfis de usuário e tema
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "light") {
+      root.classList.add("light-theme");
+      document.body.classList.add("light-theme");
+    } else {
+      root.classList.remove("light-theme");
+      document.body.classList.remove("light-theme");
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => {
+      const next = prev === "dark" ? "light" : "dark";
+      localStorage.setItem("omnicard_theme", next);
+      return next;
+    });
+  };
   useEffect(() => {
     async function checkSession() {
       setLoading(true);
@@ -161,7 +182,7 @@ export default function App() {
 
         {/* Sidebar Footer */}
         <div className="sidebar-footer">
-          <div className="user-profile-badge">
+          <div className="user-profile-badge" style={{ marginBottom: "1rem" }}>
             <div className="avatar-initials">
               {nome.substring(0, 2).toUpperCase()}
             </div>
@@ -170,6 +191,19 @@ export default function App() {
               <span className="user-role">{role}</span>
             </div>
           </div>
+
+          <div className="theme-toggle-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", marginBottom: "1rem", padding: "0 4px" }}>
+            <span style={{ fontSize: "0.85rem", color: "var(--text-secondary)", fontWeight: 500 }}>Aparência</span>
+            <button 
+              className="btn btn-secondary btn-icon" 
+              onClick={toggleTheme} 
+              style={{ width: "32px", height: "32px", padding: 0 }}
+              title={theme === "dark" ? "Ativar Modo Claro" : "Ativar Modo Escuro"}
+            >
+              {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
+          </div>
+
           <button className="btn btn-secondary btn-signout" onClick={handleSignOut} style={styles.signOutBtn}>
             <LogOut size={16} />
             <span>Sair do Portal</span>

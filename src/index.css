@@ -472,3 +472,69 @@ tr:hover td {
     padding: 12px 0;
   }
 }
+
+/* ==========================================================================
+   TEMA LIGHT / CLARO (ADAPTAÇÃO PREMIUM)
+   ========================================================================== */
+
+:root.light-theme {
+  --bg-main: #f1f5f9; /* Slate 100 - fundo suave e limpo */
+  --bg-card: rgba(255, 255, 255, 0.7); /* Vidro branco translúcido */
+  --bg-sidebar: rgba(255, 255, 255, 0.85); /* Sidebar mais opaca */
+  --bg-hover: rgba(226, 232, 240, 0.6); /* Slate 200 */
+  --bg-input: #ffffff;
+
+  --border-color: rgba(203, 213, 225, 0.6); /* Slate 300 suavizado */
+  --border-glow: rgba(59, 130, 246, 0.05);
+  --border-focus: rgba(59, 130, 246, 0.5);
+
+  /* Accents */
+  --primary: hsl(217, 90%, 48%); /* Azul levemente mais escuro para contraste */
+  --primary-glow: rgba(59, 130, 246, 0.1);
+  --secondary: hsl(263, 85%, 52%); /* Roxo ajustado */
+  --secondary-glow: rgba(124, 58, 237, 0.1);
+
+  /* Text */
+  --text-primary: #0f172a; /* Slate 900 */
+  --text-secondary: #475569; /* Slate 700 */
+  --text-muted: #64748b; /* Slate 500 */
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -1px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.04), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
+}
+
+body.light-theme {
+  background-image: 
+    radial-gradient(circle at 10% 20%, hsla(217, 100%, 61%, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, hsla(263, 90%, 64%, 0.03) 0%, transparent 40%);
+}
+
+.light-theme .page-title h1 {
+  background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light-theme th {
+  background: rgba(15, 23, 42, 0.03);
+}
+
+.light-theme tr:hover {
+  background: rgba(15, 23, 42, 0.015) !important;
+}
+
+.light-theme .avatar-initials {
+  background: linear-gradient(135deg, var(--bg-hover), var(--border-color));
+  color: var(--text-primary);
+}
+
+/* Transições de cores suaves ao alternar o tema */
+body, aside, .glass-panel, button, input, select, table, th, td, h1, h2, h3, p, span, svg {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
