@@ -1,4 +1,4 @@
-# 🛡️ Antigravity - Portal de Benefícios & Cartões
+# 🛡️ OmniCard - Gestão Unificada de Cartões e Colaboradores
 
 > Sistema corporativo premium para gestão de benefícios, cartões corporativos, controle de empresas, contratos e colaboradores. Conta com uma arquitetura moderna integrando React, TypeScript, Supabase e Deno Edge Functions.
 
@@ -9,7 +9,7 @@
 ### 📊 Visão Geral do Dashboard
 ```
 +-----------------------------------------------------------------------------------+
-|  [🛡️ ANTIGRAVITY]  Portal de Benefícios & Cartões          [👤 Carlos Silva (Admin)]  |
+|  [🛡️ OMNICARD]  Portal de Benefícios & Cartões              [👤 Carlos Silva (Admin)]  |
 +-----------------------------------------------------------------------------------+
 |  | 📊 Dashboard    |                                                              |
 |  | 🏢 Empresas     |  EMPRESAS ATIVAS      CONTRATOS A VENCER     CARTÕES EMITIDOS |

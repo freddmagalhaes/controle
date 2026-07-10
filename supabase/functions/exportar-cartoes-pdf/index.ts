@@ -145,8 +145,8 @@ serve(async (req) => {
         color: rgb(0.85, 0.7, 0.2), // Dourado
       });
 
-      // Logotipo do Sistema de Cartão (Fictício: "ANTIGRAVITY BENEFÍCIOS")
-      page.drawText("ANTIGRAVITY", {
+      // Logotipo do Sistema de Cartão (Fictício: "OMNICARD BENEFÍCIOS")
+      page.drawText("OMNICARD", {
         x: 230,
         y: yPosition - 30,
         size: 10,

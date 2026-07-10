@@ -76,7 +76,7 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
           <div className="avatar-initials" style={styles.logoIcon}>
             <ShieldCheck size={24} />
           </div>
-          <h2 style={styles.title}>ANTIGRAVITY</h2>
+          <h2 style={styles.title}>OmniCard</h2>
           <p style={styles.subtitle}>Portal de Benefícios & Cartões</p>
         </div>
 
@@ -164,7 +164,7 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
               </svg>
               <div style={styles.qrText}>
                 <span style={{ fontSize: "0.75rem", color: "var(--text-secondary)" }}>Segredo TOTP:</span>
-                <code style={{ fontSize: "0.85rem", color: "var(--primary)" }}>ANTIGRAVITY-AUTH-KEY</code>
+                <code style={{ fontSize: "0.85rem", color: "var(--primary)" }}>OMNICARD-AUTH-KEY</code>
               </div>
             </div>
 
