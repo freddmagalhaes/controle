@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { supabase, isSimulated } from "../lib/supabaseClient";
 import supabaseSimulator from "../lib/supabaseSimulator";
-import { ShieldCheck, ShieldAlert, KeyRound, Mail, RefreshCw, Lock } from "lucide-react";
+import { ShieldAlert, KeyRound, Mail, RefreshCw, Lock } from "lucide-react";
 
 interface AuthProps {
   onLoginSuccess: (user: any) => void;
@@ -74,7 +74,28 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
       <div className="glass-panel fade-in" style={styles.card}>
         <div style={styles.logoArea}>
           <div className="avatar-initials" style={styles.logoIcon}>
-            <ShieldCheck size={24} />
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <linearGradient id="omni-auth-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#3ecf8e" />
+                  <stop offset="50%" stop-color="#00e5ff" />
+                  <stop offset="100%" stop-color="#7c3aed" />
+                </linearGradient>
+              </defs>
+              <path 
+                d="M7 16a4 4 0 110-8c1.8 0 3.2 1.2 3.8 2.8L16 6h5a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5.2-4.8C10.2 14.8 8.8 16 7 16z" 
+                stroke="url(#omni-auth-logo-grad)" 
+                strokeWidth="2.2" 
+                strokeLinejoin="round" 
+              />
+              <path d="M15 10h4M15 14h4" stroke="url(#omni-auth-logo-grad)" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
+            </svg>
           </div>
           <h2 style={styles.title}>OmniCard</h2>
           <p style={styles.subtitle}>Portal de Benefícios & Cartões</p>

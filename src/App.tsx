@@ -99,12 +99,22 @@ export default function App() {
             height="28"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            <defs>
+              <linearGradient id="omni-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3ecf8e" />
+                <stop offset="50%" stop-color="#00e5ff" />
+                <stop offset="100%" stop-color="#7c3aed" />
+              </linearGradient>
+            </defs>
+            <path 
+              d="M7 16a4 4 0 110-8c1.8 0 3.2 1.2 3.8 2.8L16 6h5a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5.2-4.8C10.2 14.8 8.8 16 7 16z" 
+              stroke="url(#omni-logo-grad)" 
+              strokeWidth="2.2" 
+              strokeLinejoin="round" 
+            />
+            <path d="M15 10h4M15 14h4" stroke="url(#omni-logo-grad)" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
           </svg>
           <span>OmniCard</span>
         </div>
