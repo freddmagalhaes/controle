@@ -9,6 +9,11 @@
   /* Font Family */
   --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
+  /* Logo Gradients (Dark Mode) */
+  --logo-stop-1: #3ecf8e;
+  --logo-stop-2: #00e5ff;
+  --logo-stop-3: #7c3aed;
+
   /* Color Palette (HSL para maior controle harmônico) */
   --bg-main: #060913;
   --bg-card: hsla(224, 60%, 8%, 0.65);
@@ -482,6 +487,11 @@ tr:hover td {
   --bg-card: rgba(255, 255, 255, 0.7); /* Vidro branco translúcido */
   --bg-sidebar: rgba(255, 255, 255, 0.85); /* Sidebar mais opaca */
   --bg-hover: rgba(226, 232, 240, 0.6); /* Slate 200 */
+
+  /* Logo Gradients (Light Mode - Darker for contrast) */
+  --logo-stop-1: #10b981;
+  --logo-stop-2: #0284c7;
+  --logo-stop-3: #6d28d9;
   --bg-input: #ffffff;
 
   --border-color: rgba(203, 213, 225, 0.6); /* Slate 300 suavizado */

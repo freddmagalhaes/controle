@@ -124,9 +124,9 @@ export default function App() {
           >
             <defs>
               <linearGradient id="omni-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#3ecf8e" />
-                <stop offset="50%" stop-color="#00e5ff" />
-                <stop offset="100%" stop-color="#7c3aed" />
+                <stop offset="0%" stop-color="var(--logo-stop-1)" />
+                <stop offset="50%" stop-color="var(--logo-stop-2)" />
+                <stop offset="100%" stop-color="var(--logo-stop-3)" />
               </linearGradient>
             </defs>
             <path 
