@@ -169,7 +169,7 @@ export default function Auth({ onLoginSuccess, onBack }: AuthProps) {
               {loading ? <RefreshCw className="spin" size={18} /> : "Entrar no Sistema"}
             </button>
 
-            {isSimulated && (
+            {isSimulated && import.meta.env.DEV && (
               <div style={styles.demoCredentials}>
                 <p style={{ fontWeight: 600, color: "var(--primary)", marginBottom: "4px" }}>Credenciais de Demonstração (MFA Ativo):</p>
                 <code style={styles.code}>Admin: admin@sistema.com / 123456</code>
@@ -235,11 +235,13 @@ export default function Auth({ onLoginSuccess, onBack }: AuthProps) {
               Voltar ao Login
             </button>
 
-            <div style={styles.mfaHint}>
-              <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>
-                Dica de simulação: Insira qualquer código de 6 dígitos (ex: 123456)
-              </span>
-            </div>
+            {import.meta.env.DEV && (
+              <div style={styles.mfaHint}>
+                <span style={{ color: "var(--text-muted)", fontSize: "0.75rem" }}>
+                  Dica de simulação: Insira qualquer código de 6 dígitos (ex: 123456)
+                </span>
+              </div>
+            )}
           </form>
         )}
       </div>
